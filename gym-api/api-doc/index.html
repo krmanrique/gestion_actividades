@@ -26,6 +26,13 @@
         ul {
             margin-left: 20px;
         }
+        .activity-card {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -65,5 +72,51 @@
         <li>Michael Sanchez</li>
         <li>Kevin Manrique</li>
     </ul>
+
+    <h2>Actividades en vivo:</h2>
+    <button onclick="cargarActividades()">Mostrar Actividades</button>
+    <div id="actividades"></div>
+
+    <script>
+        async function cargarActividades() {
+            const contenedor = document.getElementById("actividades");
+            contenedor.innerHTML = "Cargando actividades...";
+
+            try {
+                const res = await fetch("https://gestion-actividades.onrender.com/activities");
+                const data = await res.json();
+
+                if (!Array.isArray(data)) {
+                    throw new Error("La respuesta no es una lista");
+                }
+
+                if (data.length === 0) {
+                    contenedor.innerHTML = "<p>No hay actividades registradas.</p>";
+                    return;
+                }
+
+                contenedor.innerHTML = "";
+                data.forEach(act => {
+                    const card = document.createElement("div");
+                    card.className = "activity-card";
+                    card.innerHTML = `
+                        <strong>${act.nombre}</strong><br>
+                        <em>${act.descripcion}</em><br>
+                        <strong>Categoría:</strong> ${act.categoria}<br>
+                        <strong>Nivel:</strong> ${act.nivel}<br>
+                        <strong>Requisitos:</strong> ${act.requisitos}<br>
+                        <strong>Duración:</strong> ${act.duracion_min} minutos<br>
+                        <strong>Profesor:</strong> ${act.profesor}<br>
+                        <strong>Cupos máximos:</strong> ${act.cupos_maximos}<br>
+                        <strong>ID Entrenador:</strong> ${act.trainer_id}
+                    `;
+                    contenedor.appendChild(card);
+                });
+            } catch (err) {
+                console.error(err);
+                contenedor.innerHTML = "<p>Error al cargar actividades.</p>";
+            }
+        }
+    </script>
 </body>
 </html>
