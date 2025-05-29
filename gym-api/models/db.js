@@ -1,9 +1,14 @@
-const { Pool } = require('pg');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
-});
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI); // sin opciones
+    console.log('Conexión a MongoDB establecida');
+  } catch (error) {
+    console.error('Error de conexión a MongoDB:', error.message);
+    process.exit(1);
+  }
+};
 
-module.exports = pool;
+module.exports = connectDB;

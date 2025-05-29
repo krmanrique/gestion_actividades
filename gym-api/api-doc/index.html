@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>API Contract - Gestión de Actividades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        code, pre {
+            background: #eee;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Contract - Gestión de Actividades (Grupo 3)</h1>
+
+    <h2>Base Path:</h2>
+    <p><code>/activities</code></p>
+
+    <h2>Endpoints:</h2>
+    <ul>
+        <li><code>GET /activities</code> → Listar todas las actividades</li>
+        <li><code>GET /activities/{id}</code> → Obtener actividad por ID</li>
+        <li><code>POST /activities</code> → Crear nueva actividad</li>
+        <li><code>PUT /activities/{id}</code> → Actualizar actividad</li>
+        <li><code>DELETE /activities/{id}</code> → Eliminar actividad</li>
+        <li><code>PUT /activities/{id}/assign-trainer/{trainerId}</code> → Asignar entrenador a la actividad</li>
+        <li><code>GET /activities/{id}/attendees</code> → Listar usuarios asistentes</li>
+    </ul>
+
+    <h2>Modelo de Actividad (JSON):</h2>
+    <pre>{
+  "id": "string",
+  "nombre": "string",
+  "descripcion": "string",
+  "categoria": "string",
+  "nivel": "básico|intermedio|avanzado",
+  "requisitos": "string",
+  "duracion_min": 60,
+  "profesor": "string",
+  "cupos_maximos": 20,
+  "trainer_id": "string"
+}</pre>
+
+    <h2>Integrantes del grupo:</h2>
+    <ul>
+        <li>Yury Moreno</li>
+        <li>Michael Sanchez</li>
+        <li>Kevin Manrique</li>
+    </ul>
+</body>
+</html>
