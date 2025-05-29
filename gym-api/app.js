@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const cosr = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./models/db');
 const activitiesRoutes = require('./routes/activities');
@@ -8,11 +8,13 @@ const activitiesRoutes = require('./routes/activities');
 const app = express();
 connectDB();
 
-app.use(cosr());
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/activities', activitiesRoutes);
 
-app.listen(3000, () => {
-    console.log('Servidor corriendo en el puerto 3000');
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
