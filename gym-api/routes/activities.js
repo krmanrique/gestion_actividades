@@ -7,7 +7,7 @@ router.get('/:id', activitiesController.getById);
 router.post('/', activitiesController.create);
 router.put('/:id', activitiesController.update);
 router.delete('/:id', activitiesController.remove);
-router.put('/:id/assign-trainer/:trainer_id', activitiesController.assignTrainer);
+router.put('/activities/:id/assign-trainer/:trainer_id', activitiesController.assignTrainer);
 router.get('/:id/attendees', activitiesController.getAttendees); //Puede esta vacio
 
 module.exports = router;
