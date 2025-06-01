@@ -27,3 +27,8 @@ Permite crear, listar, actualizar, eliminar y asignar entrenadores a actividades
 - **Michael Sánchez - 408016**
 - **Kevin Manrique - 407925**
 
+## Enlaces Vercel - Render
+(actualizar pagina para que funcione el listado de actividades)
+- https://gestion-actividades.onrender.com/activities
+- https://gestion-actividades-three.vercel.app/
+
